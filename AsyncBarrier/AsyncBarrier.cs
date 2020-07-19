@@ -23,9 +23,9 @@ namespace System.Threading
             m_postPhaseFunc = postPhaseFunc;
         }
 
-        public TaskAwaiter GetAwaiter() => SignalAndWait().GetAwaiter();
+        public TaskAwaiter GetAwaiter() => SignalAndWaitAsync().GetAwaiter();
 
-        public Task SignalAndWait()
+        public Task SignalAndWaitAsync()
         {
             var tcs = new TaskCompletionSource<bool>();
             m_waiters.Push(tcs);
